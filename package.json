@@ -1,0 +1,25 @@
+{
+  "name": "strapi-plugin-rating-field",
+  "version": "0.0.0",
+  "description": "This is the description of the plugin.",
+  "strapi": {
+    "name": "strapi-plugin-rating-field",
+    "description": "Description of Strapi Plugin Rating Field plugin",
+    "kind": "plugin",
+    "displayName": "Strapi Plugin Rating Field"
+  },
+  "dependencies": {},
+  "author": {
+    "name": "A Strapi developer"
+  },
+  "maintainers": [
+    {
+      "name": "A Strapi developer"
+    }
+  ],
+  "engines": {
+    "node": ">=14.19.1 <=18.x.x",
+    "npm": ">=6.0.0"
+  },
+  "license": "MIT"
+}

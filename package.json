@@ -1,20 +1,23 @@
 {
   "name": "strapi-plugin-rating-field",
-  "version": "0.0.0",
-  "description": "This is the description of the plugin.",
+  "version": "1.0.0",
+  "description": "A custom field for content rating.",
   "strapi": {
-    "name": "strapi-plugin-rating-field",
-    "description": "Description of Strapi Plugin Rating Field plugin",
+    "name": "rating",
+    "description": "A custom field for content rating.",
     "kind": "plugin",
-    "displayName": "Strapi Plugin Rating Field"
+    "displayName": "Rating Field"
   },
   "dependencies": {},
+  "peerDependencies": {
+    "@strapi/strapi": "^4.4.0"
+  },
   "author": {
-    "name": "A Strapi developer"
+    "name": "khang-nd"
   },
   "maintainers": [
     {
-      "name": "A Strapi developer"
+      "name": "khang-nd"
     }
   ],
   "engines": {

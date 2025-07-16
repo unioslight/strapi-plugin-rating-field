@@ -1,42 +1,47 @@
-import { prefixPluginTranslations } from '@strapi/helper-plugin';
-import pluginPkg from '../../package.json';
-import pluginId from './pluginId';
-import Initializer from './components/Initializer';
-import PluginIcon from './components/PluginIcon';
-
-const name = pluginPkg.strapi.name;
+import { prefixPluginTranslations } from "@strapi/helper-plugin";
+import pluginPkg from "../../package.json";
+import RatingFieldIcon from "./components/RatingFieldIcon";
+import pluginId from "./pluginId";
+import getTrad from "./utils/getTrad";
 
 export default {
   register(app) {
-    app.addMenuLink({
-      to: `/plugins/${pluginId}`,
-      icon: PluginIcon,
+    app.customFields.register({
+      name: pluginPkg.strapi.name,
+      type: "integer",
+      icon: RatingFieldIcon,
       intlLabel: {
-        id: `${pluginId}.plugin.name`,
-        defaultMessage: name,
+        id: getTrad("label"),
+        defaultMessage: "Rating",
       },
-      Component: async () => {
-        const component = await import(/* webpackChunkName: "[request]" */ './pages/App');
-
-        return component;
+      intlDescription: {
+        id: getTrad("description"),
+        defaultMessage: "Display a rating field with stars",
       },
-      permissions: [
-        // Uncomment to set the permissions of the plugin here
-        // {
-        //   action: '', // the action name should be plugin::plugin-name.actionType
-        //   subject: null,
-        // },
-      ],
-    });
-    app.registerPlugin({
-      id: pluginId,
-      initializer: Initializer,
-      isReady: false,
-      name,
+      components: {
+        Input: async () => await import("./components/RatingField"),
+      },
+      options: {
+        base: [],
+        advanced: [
+          {
+            name: "required",
+            type: "checkbox",
+            intlLabel: {
+              id: getTrad("options.advanced.required"),
+              defaultMessage: "Required field",
+            },
+            description: {
+              id: getTrad("options.advanced.required.description"),
+              defaultMessage:
+                "You won't be able to create an entry if this field is empty",
+            },
+          },
+        ],
+      },
     });
   },
 
-  bootstrap(app) {},
   async registerTrads({ locales }) {
     const importedTrads = await Promise.all(
       locales.map((locale) => {

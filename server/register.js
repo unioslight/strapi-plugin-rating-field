@@ -1,5 +1,10 @@
-'use strict';
+"use strict";
+const pkg = require("../package.json");
 
 module.exports = ({ strapi }) => {
-  // registeration phase
+  strapi.customFields.register({
+    name: pkg.strapi.name,
+    plugin: "rating-field",
+    type: "integer",
+  });
 };
